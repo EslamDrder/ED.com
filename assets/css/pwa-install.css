@@ -1,0 +1,365 @@
+
+/* =====================================================
+   MOBILEMAX - PWA INSTALL MODAL
+===================================================== */
+
+body.mm-modal-lock {
+    overflow: hidden;
+}
+
+/* Overlay */
+
+.install-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 999999;
+
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    background: rgba(15, 23, 42, .55);
+
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+
+    opacity: 0;
+    transition: opacity .25s ease;
+}
+
+.install-overlay.mm-open {
+    display: flex;
+    opacity: 1;
+}
+
+/* Card */
+
+.install-card {
+    position: relative;
+
+    width: 100%;
+    max-width: 400px;
+
+    padding: 30px 22px 22px;
+
+    text-align: center;
+
+    background: #fff;
+    color: #172033;
+
+    border-radius: 24px;
+
+    box-shadow: 0 25px 70px rgba(15, 23, 42, .3);
+
+    font-family: Cairo, sans-serif;
+
+    animation: mmSlideUp .3s ease;
+}
+
+/* Close */
+
+.install-close {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+
+    width: 34px;
+    height: 34px;
+
+    display: grid;
+    place-items: center;
+
+    border: 0;
+    border-radius: 50%;
+
+    background: #f1f5f9;
+    color: #64748b;
+
+    cursor: pointer;
+
+    transition: background .2s ease, color .2s ease;
+}
+
+.install-close:hover {
+    background: #e2e8f0;
+    color: #172033;
+}
+
+/* Logo */
+
+.install-logo {
+    width: 84px;
+    height: 84px;
+
+    margin: 0 auto 16px;
+    padding: 10px;
+
+    display: grid;
+    place-items: center;
+
+    background: #eff6ff;
+    border-radius: 22px;
+}
+
+.install-logo-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Content */
+
+.install-badge {
+    display: inline-block;
+
+    margin-bottom: 10px;
+    padding: 3px 12px;
+
+    background: #dbeafe;
+    color: #2563eb;
+
+    border-radius: 999px;
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.install-content h2 {
+    margin: 0 0 8px;
+
+    font-size: 20px;
+    font-weight: 800;
+    line-height: 1.6;
+}
+
+.install-content h2 strong {
+    color: #2563eb;
+}
+
+.install-content p {
+    margin: 0 0 18px;
+
+    color: #64748b;
+
+    font-size: 13px;
+    line-height: 1.9;
+}
+
+/* Buttons */
+
+.install-button,
+.continue-button {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+    padding: 13px 16px;
+
+    border: 0;
+    border-radius: 14px;
+
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: transform .15s ease, background .2s ease;;
+}
+
+.install-button {
+    background: #2563eb;
+    color: #fff;
+
+    box-shadow: 0 10px 24px rgba(37, 99, 235, .32);
+}
+
+.install-button:hover {
+    background: #1d4ed8;
+}
+
+.install-button:active,
+.continue-button:active {
+    transform: scale(.98);
+}
+
+.install-button:disabled {
+    opacity: .6;
+    cursor: not-allowed;
+}
+
+.continue-button {
+    margin-top: 8px;
+
+    background: transparent;
+    color: #64748b;
+
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.continue-button:hover {
+    color: #172033;
+}
+
+/* iOS Instructions */
+
+.ios-install {
+    display: none;
+
+    margin-top: 14px;
+    padding: 14px;
+
+    text-align: right;
+
+    background: #f8fafc;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+}
+
+.ios-install.mm-show {
+    display: block;
+}
+
+.ios-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    margin-bottom: 6px;
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.ios-install p {
+    margin: 0;
+
+    color: #475569;
+
+    font-size: 12.5px;
+    line-height: 2;
+}
+
+.ios-install p i {
+    color: #2563eb;
+    margin: 0 3px;
+}
+
+.ios-note {
+    margin-top: 8px !important;
+    color: #b45309 !important;
+    font-weight: 600;
+}
+
+/* Dynamic Instructions */
+
+#installPlatformInstructions {
+    display: none;
+
+    margin-top: 14px;
+    padding: 14px;
+
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+
+    background: #f8fafc;
+    color: #172033;
+
+    font-size: 14px;
+    line-height: 1.9;
+    text-align: right;
+    direction: rtl;
+}
+
+#installPlatformInstructions ol {
+    margin: 8px 0 0;
+    padding-right: 22px;
+}
+
+/* Animations */
+
+@keyframes mmSlideUp {
+    from {
+        transform: translateY(24px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Mobile */
+
+@media (max-width: 480px) {
+    .install-overlay {
+        align-items: flex-end;
+        padding: 0;
+    }
+
+    .install-card {
+        max-width: none;
+
+        border-radius: 24px 24px 0 0;
+
+        padding-bottom: calc(
+            22px + env(safe-area-inset-bottom)
+        );
+    }
+}
+.install-overlay {
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.install-overlay.mm-open {
+    display: flex;
+    visibility: visible;
+    pointer-events: auto;
+}
+/* Accessibility & Responsive Improvements */
+
+.install-overlay {
+    overflow-y: auto;
+    overscroll-behavior: contain;
+}
+
+.install-card {
+    max-height: calc(100vh - 40px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+}
+
+.install-button:focus-visible,
+.continue-button:focus-visible,
+.install-close:focus-visible {
+    outline: 3px solid #93c5fd;
+    outline-offset: 3px;
+}
+
+@media (max-width: 480px) {
+    .install-card {
+        max-height: 90vh;
+        max-height: 90dvh;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .install-card {
+        animation: none;
+    }
+
+    .install-overlay,
+    .install-button,
+    .continue-button,
+    .install-close {
+        transition: none;
+    }
+}
